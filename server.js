@@ -42,7 +42,7 @@ app.use(
 );
 
 // static path
-// app.use(express.static(path.join(__dirname, "public")));
+ app.use(express.static(path.join(__dirname, "public")));
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 //  routes
@@ -53,9 +53,10 @@ app.use('/parliamentarians', parliamentarianRoute);
 app.use('/polling-stations', pollingStationRoute);
 app.use('/presidents', presidentRoute);
 
-// app.get("/*", function (req, res) {
-//   res.sendFile(path.join(__dirname, "public", "index.html"));
-// });
+
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 //  error handlers
 app.use((req, res, next) => {
